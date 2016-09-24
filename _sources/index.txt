@@ -1,20 +1,20 @@
-.. my-wiki documentation master file, created by
+.. sphinx-wiki documentation master file, created by
    sphinx-quickstart on Sat Sep 24 16:32:37 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to sphinx-wiki
-===================================
+欢迎来到 sphinx-wiki
+====================
 
-Contents:
+内容:
 
 .. toctree::
    :maxdepth: 2
 
    python-encoding-problems 
 
-Indices and tables
-==================
+索引和表
+========
 
 * :ref:`genindex`
 * :ref:`modindex`
