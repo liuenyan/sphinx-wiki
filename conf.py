@@ -254,6 +254,14 @@ latex_elements = {
      # Latex figure (float) alignment
      #
      # 'figure_align': 'htbp',
+    'papersize': 'letterpaper',
+    'pointsize': '10pt',
+    'utf8extra': '',
+    'inputenc': '',
+    'preamble': r'''
+        \hypersetup{unicode=True}
+        \usepackage{ctex}
+    '''
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
