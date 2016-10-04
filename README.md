@@ -1,6 +1,6 @@
 # sphinx-wiki
 
-一个使用 [sphinx](http://www.shinx-doc.org/) 生成的静态 wiki 。
+一个使用 [sphinx](http://www.sphinx-doc.org/) 生成的静态 wiki 。
 
 ## 分支说明
 
