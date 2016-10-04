@@ -17,8 +17,8 @@ sphinx-wiki 使用两个分支来存储文件。
 
 3. 切换到 \_build/html 目录，执行 `python3 -m http.server` 运行 http 服务器，在浏览器中打开 http://127.0.0.1:8000/ 预览生成的网页。
 
-4. 使用 [ghp-import](https://github.com/davisp/ghp-import) 导出\_build/html 目录到 gh-pages 分支。
+4. 使用 [ghp-import](https://github.com/davisp/ghp-import) 导出\_build/html 目录到 gh-pages 分支。注意一定要使用 -n 参数来生成.nojekyll 文件。
 
-   `ghp-import -n -build/html/`
+   `ghp-import -n _build/html/`
 
 5. 分别 push master 分支和 gh-pages 分支到 github 。
