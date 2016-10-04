@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Virtualbox 相关话题 &#8212; sphinx-wiki 1.0 文档</title>
+    <title>Linux 命令行工具 &#8212; sphinx-wiki 1.0 文档</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,8 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
     <link rel="top" title="sphinx-wiki 1.0 文档" href="index.html" />
-    <link rel="prev" title="Python 编码相关问题收集" href="python-encoding-problems.html" />
+    <link rel="next" title="Python 编码相关问题收集" href="python-encoding-problems.html" />
+    <link rel="prev" title="欢迎来到 sphinx-wiki" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -43,27 +44,56 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="virtualbox">
-<h1>Virtualbox 相关话题<a class="headerlink" href="#virtualbox" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="linux">
+<h1>Linux 命令行工具<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h1>
+<div class="section" id="tar">
+<h2>tar 命令<a class="headerlink" href="#tar" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id1">
-<h2>Virtualbox 虚拟磁盘文件的压缩<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h3>分卷压缩<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">虚拟磁盘碎片整理。在虚拟机中执行如下命令:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/EMPTY <span class="nv">bs</span><span class="o">=</span>1M
-sudo rm -f /EMPTY
+<li><p class="first">分卷压缩。</p>
+<p>注意split的参数 &#8216;-&#8216;(标准输出和输入), 生成的分包文件名为logs.tar.bz2.aa logs.tar.bz2.ab logs.tar.bz2.ac，以此类推。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>tar jcf - logs/ <span class="p">|</span> split -b 10m - logs.tar.bz2.
 </pre></div>
 </div>
 </li>
-<li><p class="first">压缩磁盘。关闭虚拟机，在宿主机中执行下面的命令:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>VBoxManage modifyhd mydisk.vdi --compact
+<li><p class="first">解压缩命令为:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cat logs.tar.bz2.a* <span class="p">|</span> tar xj -
 </pre></div>
 </div>
 </li>
 </ol>
-<dl class="docutils">
-<dt>参考资料:</dt>
-<dd><a class="reference external" href="https://my.oschina.net/tsl0922/blog/188276">如何减小VirtualBox虚拟硬盘文件的大小</a></dd>
-</dl>
+</div>
+</div>
+<div class="section" id="swap">
+<h2>创建 swap 文件<a class="headerlink" href="#swap" title="永久链接至标题">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">创建一个 1G 大小的文件:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/root/swapfile <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span>1024000
+</pre></div>
+</div>
+</li>
+<li><p class="first">制作 swap 文件:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkswap /root/swapfile
+</pre></div>
+</div>
+</li>
+<li><p class="first">让 swap 生效:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>swapon /root/swapfile
+</pre></div>
+</div>
+</li>
+<li><p class="first">查看当前 swap:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>swapon -s
+</pre></div>
+</div>
+</li>
+<li><p class="first">自动加载 swap。修改 /etc/fstab 加入下面的内容:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>/root/swapfile swap swap defaults <span class="m">0</span> 1
+</pre></div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 
@@ -75,8 +105,12 @@ sudo rm -f /EMPTY
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">內容目录</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Virtualbox 相关话题</a><ul>
-<li><a class="reference internal" href="#id1">Virtualbox 虚拟磁盘文件的压缩</a></li>
+<li><a class="reference internal" href="#">Linux 命令行工具</a><ul>
+<li><a class="reference internal" href="#tar">tar 命令</a><ul>
+<li><a class="reference internal" href="#id1">分卷压缩</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#swap">创建 swap 文件</a></li>
 </ul>
 </li>
 </ul>
@@ -84,14 +118,15 @@ sudo rm -f /EMPTY
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="python-encoding-problems.html" title="上一章">Python 编码相关问题收集</a></li>
+      <li>Previous: <a href="index.html" title="上一章">欢迎来到 sphinx-wiki</a></li>
+      <li>Next: <a href="python-encoding-problems.html" title="下一章">Python 编码相关问题收集</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>本页</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/virtualbox-issues.txt"
+      <li><a href="_sources/linux-commands.txt"
             rel="nofollow">显示源代码</a></li>
     </ul>
    </div>
@@ -117,7 +152,7 @@ sudo rm -f /EMPTY
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/virtualbox-issues.txt"
+      <a href="_sources/linux-commands.txt"
           rel="nofollow">Page source</a>
     </div>
 
