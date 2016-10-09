@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GDB 命令速查 &#8212; sphinx-wiki 1.0 文档</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="top" title="sphinx-wiki 1.0 文档" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gdb">
+<h1>GDB 命令速查<a class="headerlink" href="#gdb" title="永久链接至标题">¶</a></h1>
+<div class="section" id="info">
+<h2>info 命令<a class="headerlink" href="#info" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="9%" />
+<col width="49%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head" colspan="2">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>info breakpoints</td>
+<td>&nbsp;</td>
+<td colspan="2">查看断点,可以后接参数n表示查看某个断点号</td>
+</tr>
+<tr class="row-odd"><td>info watchpoints</td>
+<td>&nbsp;</td>
+<td colspan="2">列出当前所设置了的所有观察点</td>
+</tr>
+<tr class="row-even"><td>info args</td>
+<td>&nbsp;</td>
+<td colspan="2">打印出当前函数的参数名及其值</td>
+</tr>
+<tr class="row-odd"><td>info locals</td>
+<td>&nbsp;</td>
+<td colspan="2">打印出当前函数中所有局部变量及其值</td>
+</tr>
+<tr class="row-even"><td>info frame</td>
+<td>info f</td>
+<td colspan="2">打印出更为详细的当前栈层的信息，只不过，大多数都是运行时的内存地址,
+如函数地址，调用函数的地址，被调用函数的地址。</td>
+</tr>
+<tr class="row-odd"><td>info signals</td>
+<td>&nbsp;</td>
+<td colspan="2">打印信号信息</td>
+</tr>
+<tr class="row-even"><td>info handle</td>
+<td>&nbsp;</td>
+<td colspan="2">查看有哪些信号在被GDB检测中</td>
+</tr>
+<tr class="row-odd"><td>info threads</td>
+<td>&nbsp;</td>
+<td colspan="2">查看GDB为程序分配的线程号</td>
+</tr>
+<tr class="row-even"><td>info display</td>
+<td>&nbsp;</td>
+<td colspan="2">查看display设置的自动显示的信息</td>
+</tr>
+<tr class="row-odd"><td>info program</td>
+<td>&nbsp;</td>
+<td colspan="2">当进程被gdb停住时，使用该命令查看程序的是否在运行、进程号和被暂停的原因</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="watchpoint">
+<h2>设置观察点(Watchpoint)<a class="headerlink" href="#watchpoint" title="永久链接至标题">¶</a></h2>
+<p>观察点一般来观察某个表达式（变量也是一种表达式）的值是否有变化了，如果有变化，马上停住程序。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="9%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>watch &lt;expr&gt;</td>
+<td>&nbsp;</td>
+<td>为表达式（变量）expr设置一个观察点。一旦表达式值有变化时，马上停住程序</td>
+</tr>
+<tr class="row-odd"><td>rwatch &lt;expr&gt;</td>
+<td>&nbsp;</td>
+<td>当表达式（变量）expr被读时，停住程序</td>
+</tr>
+<tr class="row-even"><td>awatch &lt;expr&gt;</td>
+<td>&nbsp;</td>
+<td>当表达式（变量）的值被读或被写时，停住程序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="breakpoint">
+<h2>维护停止点(Breakpoint)<a class="headerlink" href="#breakpoint" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="9%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>break &lt;linespec&gt;
+thread &lt;threadno&gt;
+[if ...]</td>
+<td>b</td>
+<td>linespec指定了断点设置在的源程序的行号。threadno指定了线程的ID，
+缺省则表示你的断点设在所有线程上面</td>
+</tr>
+<tr class="row-odd"><td>clear</td>
+<td>&nbsp;</td>
+<td>清除所有的已定义的停止点。</td>
+</tr>
+<tr class="row-even"><td>clear &lt;function&gt;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">清除所有设置在函数上的停止点</td>
+</tr>
+<tr class="row-odd"><td>clear &lt;filename:function&gt;</td>
+</tr>
+<tr class="row-even"><td>clear &lt;linenum&gt;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">清除所有设置在指定行上的停止点</td>
+</tr>
+<tr class="row-odd"><td>clear &lt;filename:linenum&gt;</td>
+</tr>
+<tr class="row-even"><td>delete [range]</td>
+<td>d</td>
+<td>删除指定的断点，breakpoints为断点号，若不指定断点号表示删除所有的断点。
+range 表示断点号的范围（如：3-7）</td>
+</tr>
+<tr class="row-odd"><td>disable [range]</td>
+<td>dis</td>
+<td>disable所指定的停止点，breakpoints为停止点号。
+如果什么都不指定，表示disable所有的停止点。</td>
+</tr>
+<tr class="row-even"><td>enable [range]</td>
+<td>&nbsp;</td>
+<td>enable所指定的停止点，breakpoints为停止点号</td>
+</tr>
+<tr class="row-odd"><td>enable once [range]</td>
+<td>&nbsp;</td>
+<td>enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动disable</td>
+</tr>
+<tr class="row-even"><td>enable delete range</td>
+<td>&nbsp;</td>
+<td>enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动删除。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="command">
+<h2>停止点或观察点的自动运行命令(Command)<a class="headerlink" href="#command" title="永久链接至标题">¶</a></h2>
+<p>我们可以使用GDB提供的command命令来设置停止点（或观察点）的运行命令。也就是说，当运行的程序在被停止住时，我们可以让其自动运行一些别的命令，这很有利行自动化调试。</p>
+<ol class="arabic">
+<li><p class="first">为断点号bnum指写一个命令列表。当程序被该断点停住时，gdb会依次运行命令列表中的命令：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">commands</span> <span class="p">[</span><span class="n">bnum</span><span class="p">]</span>
+<span class="o">...</span> <span class="n">command</span><span class="o">-</span><span class="nb">list</span> <span class="o">...</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">或者设置断点的同时给出命令：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">break</span> <span class="n">foo</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">commands</span>
+<span class="n">printf</span> <span class="s2">&quot;x is </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">x</span>
+<span class="k">continue</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>查看栈信息<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>查看程序是在哪里停住的：当你的程序调用了一个函数，函数的地址，函数参数，函数内的局部变量都会被压入“栈”（Stack）中。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="12%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>backtrace</td>
+<td>bt</td>
+<td>打印当前的函数调用栈的所有信息</td>
+</tr>
+<tr class="row-odd"><td>backtrace&lt;bt&gt; n</td>
+<td>bt n</td>
+<td>n是一个整数，正数表示只打印栈顶上n层的栈信息，
+负数表示只显示栈底下n层。</td>
+</tr>
+<tr class="row-even"><td>frame&lt;f&gt; [n]</td>
+<td>f n</td>
+<td>打印出层编号，当前的函数名，函数参数值，函数所在文件及行号，
+函数执行到的语句。n是栈里面层编号，如frame 0表示栈顶。</td>
+</tr>
+<tr class="row-odd"><td>up [n]</td>
+<td>&nbsp;</td>
+<td>表示向栈的上面移动n层，缺省n表示向上移动一层。</td>
+</tr>
+<tr class="row-even"><td>down [n]</td>
+<td>&nbsp;</td>
+<td>表示向栈的下面移动n层，缺省n表示向下移动一层。</td>
+</tr>
+<tr class="row-odd"><td>info frame</td>
+<td>info f</td>
+<td>打印出更为详细的当前栈层的信息，只不过，大多数都是运行时的内存地址
+,如函数地址，调用函数的地址，被调用函数的地址。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>单步跟踪调试<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="12%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>命令</td>
+<td>简写</td>
+<td>说明</td>
+</tr>
+<tr class="row-even"><td>step</td>
+<td>s</td>
+<td>单步跟踪，如果有函数调用，他会进入该函数。进入函数的前提是，
+此函数被编译有debug信息(使用 gcc -g 参数编译)。</td>
+</tr>
+<tr class="row-odd"><td>next</td>
+<td>n</td>
+<td>同样单步跟踪，如果有函数调用，他不会进入该函数。</td>
+</tr>
+<tr class="row-even"><td>continue</td>
+<td>c</td>
+<td>恢复程序运行，直到程序结束，或是下一个断点到来</td>
+</tr>
+<tr class="row-odd"><td>finish</td>
+<td>&nbsp;</td>
+<td>运行程序，直到当前函数完成返回。
+并打印函数返回时的堆栈地址和返回值及参数值等信息</td>
+</tr>
+<tr class="row-even"><td>until</td>
+<td>u</td>
+<td>运行程序直到退出循环体</td>
+</tr>
+<tr class="row-odd"><td>display &lt;expr&gt;</td>
+<td rowspan="7">&nbsp;</td>
+<td rowspan="7">用display设定好了一个或多个表达式后，只要你的程序被停下来，
+GDB会自动显示你所设置的这些表达式的值。</td>
+</tr>
+<tr class="row-even"><td>display/&lt;fmt&gt; &lt;expr&gt;</td>
+</tr>
+<tr class="row-odd"><td>display/&lt;fmt&gt; &lt;addr&gt;</td>
+</tr>
+<tr class="row-even"><td>undisplay &lt;dnums...&gt;</td>
+</tr>
+<tr class="row-odd"><td>delete
+display &lt;dnums...&gt;</td>
+</tr>
+<tr class="row-even"><td>disable
+display &lt;dnums...&gt;</td>
+</tr>
+<tr class="row-odd"><td>enable
+display &lt;dnums...&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>查看运行时数据<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在你调试程序时，当程序被停住时，你可以使用 <code class="docutils literal"><span class="pre">print</span></code> 命令（简写命令为p），或是同义命令 <code class="docutils literal"><span class="pre">inspect</span></code> 来查看当前程序的运行数据。<code class="docutils literal"><span class="pre">print</span></code> 命令的格式是：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="11%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>print &lt;expr&gt;</td>
+<td>p &lt;expr&gt;</td>
+<td rowspan="2">&lt;/f&gt;是输出的格式，如/u /x /d /o /c 。&#8221;::&#8221; 用来指定一个在文件或是一个函数
+中的变量，如 <code class="docutils literal"><span class="pre">(gdb)</span> <span class="pre">p</span> <span class="pre">'f2.c'::x</span></code></td>
+</tr>
+<tr class="row-odd"><td>print/&lt;f&gt; &lt;expr&gt;</td>
+<td>p/&lt;f&gt; &lt;expr&gt;</td>
+</tr>
+<tr class="row-even"><td>whatis &lt;expr&gt;</td>
+<td>&nbsp;</td>
+<td>打印表达式 &lt;expr&gt; 的数据类型</td>
+</tr>
+<tr class="row-odd"><td>whatis</td>
+<td>&nbsp;</td>
+<td>打印上一个表达式 <code class="docutils literal"><span class="pre">$</span></code> 的数据类型</td>
+</tr>
+<tr class="row-even"><td>ptype &lt;typename&gt;</td>
+<td>&nbsp;</td>
+<td>打印数据类型的描述信息。对 C 代码，typename 可以是
+<code class="docutils literal"><span class="pre">class</span> <span class="pre">class-name</span></code> <code class="docutils literal"><span class="pre">struct</span> <span class="pre">struct-tag</span></code>
+<code class="docutils literal"><span class="pre">union</span> <span class="pre">union-tag</span></code> <code class="docutils literal"><span class="pre">enum</span> <span class="pre">enum-tag</span></code></td>
+</tr>
+<tr class="row-odd"><td>ptype &lt;expr&gt;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">打印表达式的类型描述信息。比 <em>whatis</em> 打印的信息更详细。
+它可以提供一个结构体的定义</td>
+</tr>
+<tr class="row-even"><td>ptype</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic">
+<li><p class="first">显示出静态数组的取值：可以直接用print数组名，就可以显示数组中所有数据的内容了。</p>
+</li>
+<li><p class="first">显示出动态数组的取值：&#64;的左边是数组的首地址的值，也就是变量array所指向的内容，右边则是数据的长度，其保存在变量len中。:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>int *array = (int *) malloc (len * sizeof (int));
+(gdb) p *array@len
+$1 = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40}
+</pre></div>
+</div>
+</li>
+<li><p class="first">ptype:比whatis的功能更强，他可以提供一个结构的定义。例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="nb">complex</span> <span class="p">{</span><span class="n">double</span> <span class="n">real</span><span class="p">;</span> <span class="n">double</span> <span class="n">imag</span><span class="p">;}</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">whatis</span> <span class="n">v</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">struct</span> <span class="nb">complex</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">ptype</span> <span class="n">v</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">struct</span> <span class="nb">complex</span> <span class="p">{</span>
+    <span class="n">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="n">double</span> <span class="n">imag</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>多线程环境<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="11%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>info threads</td>
+<td>&nbsp;</td>
+<td>查看GDB为程序分配的线程号</td>
+</tr>
+<tr class="row-odd"><td>thread num</td>
+<td>&nbsp;</td>
+<td>切换线程,命令行参数num是gdb内定的线程号。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>其他<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="11%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">命令</th>
+<th class="head">简写</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>set print pretty on</td>
+<td>&nbsp;</td>
+<td>当GDB显示结构体时会比较漂亮</td>
+</tr>
+<tr class="row-odd"><td>show convenience</td>
+<td>&nbsp;</td>
+<td>该命令查看当前所设置的所有的环境变量</td>
+</tr>
+<tr class="row-even"><td>set $foo =*object_ptr</td>
+<td>&nbsp;</td>
+<td>设置GDB的环境变量(环境变量作为左值和右值时都要加$符号)</td>
+</tr>
+<tr class="row-odd"><td>set [var] width=47</td>
+<td>&nbsp;</td>
+<td>改变被调试程序中的变量</td>
+</tr>
+<tr class="row-even"><td>jump &lt;linespec&gt;</td>
+<td>&nbsp;</td>
+<td>指定下一条语句的运行点。&lt;linespce&gt;可以是file:line格式，
+也可以是+num这种偏移量格式</td>
+</tr>
+<tr class="row-odd"><td>return [expression]</td>
+<td>&nbsp;</td>
+<td>使用return命令取消当前函数的执行，并立即返回</td>
+</tr>
+<tr class="row-even"><td>signal &lt;singal&gt;</td>
+<td>&nbsp;</td>
+<td>想被调试程序发信号。
+UNIX的系统信号量通常从1到15,所以&lt;singal&gt;取值也在这个范围</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GDB 命令速查</a><ul>
+<li><a class="reference internal" href="#info">info 命令</a></li>
+<li><a class="reference internal" href="#watchpoint">设置观察点(Watchpoint)</a></li>
+<li><a class="reference internal" href="#breakpoint">维护停止点(Breakpoint)</a></li>
+<li><a class="reference internal" href="#command">停止点或观察点的自动运行命令(Command)</a></li>
+<li><a class="reference internal" href="#id1">查看栈信息</a></li>
+<li><a class="reference internal" href="#id2">单步跟踪调试</a></li>
+<li><a class="reference internal" href="#id3">查看运行时数据</a></li>
+<li><a class="reference internal" href="#id4">多线程环境</a></li>
+<li><a class="reference internal" href="#id5">其他</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/gdb.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="转向" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Enyan Liu all rights reserved.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/gdb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

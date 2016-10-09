@@ -10,7 +10,8 @@
 
 .. toctree::
    :maxdepth: 2
-   
+
+   gdb
    linux-commands
    python-encoding-problems 
    virtualbox-issues
