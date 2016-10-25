@@ -15,6 +15,7 @@
    linux-commands
    python-encoding-problems 
    virtualbox-issues
+   docker
 
 索引和表
 ========
