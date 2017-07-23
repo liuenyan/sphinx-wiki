@@ -138,7 +138,7 @@ latex:
 latexpdf:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
-	sed -i s/pdflatex/xelatex/ $(BUILDDIR)/latex/Makefile
+	sed -i s/latexmk/xelatex/ $(BUILDDIR)/latex/Makefile
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
