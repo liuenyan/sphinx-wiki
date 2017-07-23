@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Linux 命令行工具 &#8212; sphinx-wiki 1.0 文档</title>
-    
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,7 +24,6 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="top" title="sphinx-wiki 1.0 文档" href="index.html" />
     <link rel="next" title="Python 编码相关问题收集" href="python-encoding-problems.html" />
     <link rel="prev" title="GDB 命令速查" href="gdb.html" />
    
@@ -36,7 +33,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -52,7 +49,7 @@
 <h3>分卷压缩<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">分卷压缩。</p>
-<p>注意split的参数 &#8216;-&#8216;(标准输出和输入), 生成的分包文件名为logs.tar.bz2.aa logs.tar.bz2.ab logs.tar.bz2.ac，以此类推。</p>
+<p>注意split的参数 ‘-‘(标准输出和输入), 生成的分包文件名为logs.tar.bz2.aa logs.tar.bz2.ab logs.tar.bz2.ac，以此类推。</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>tar jcf - logs/ <span class="p">|</span> split -b 10m - logs.tar.bz2.
 </pre></div>
 </div>
@@ -69,7 +66,7 @@
 <h2>创建 swap 文件<a class="headerlink" href="#swap" title="永久链接至标题">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">创建一个 1G 大小的文件:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/root/swapfile <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span>1024000
+<div class="highlight-bash"><div class="highlight"><pre><span></span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/root/swapfile <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span><span class="m">1024000</span>
 </pre></div>
 </div>
 </li>
@@ -89,7 +86,7 @@
 </div>
 </li>
 <li><p class="first">自动加载 swap。修改 /etc/fstab 加入下面的内容:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/root/swapfile swap swap defaults <span class="m">0</span> 1
+<div class="highlight-bash"><div class="highlight"><pre><span></span>/root/swapfile swap swap defaults <span class="m">0</span> <span class="m">1</span>
 </pre></div>
 </div>
 </li>
@@ -126,7 +123,7 @@
   <div role="note" aria-label="source link">
     <h3>本页</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/linux-commands.txt"
+      <li><a href="_sources/linux-commands.rst.txt"
             rel="nofollow">显示源代码</a></li>
     </ul>
    </div>
@@ -148,11 +145,11 @@
       &copy;2016, Enyan Liu all rights reserved.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/linux-commands.txt"
+      <a href="_sources/linux-commands.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

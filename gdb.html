@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>GDB 命令速查 &#8212; sphinx-wiki 1.0 文档</title>
-    
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,7 +24,6 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="top" title="sphinx-wiki 1.0 文档" href="index.html" />
     <link rel="next" title="Linux 命令行工具" href="linux-commands.html" />
     <link rel="prev" title="欢迎来到 sphinx-wiki" href="index.html" />
    
@@ -36,7 +33,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -63,19 +60,19 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>info breakpoints</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">查看断点,可以后接参数n表示查看某个断点号</td>
 </tr>
 <tr class="row-odd"><td>info watchpoints</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">列出当前所设置了的所有观察点</td>
 </tr>
 <tr class="row-even"><td>info args</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">打印出当前函数的参数名及其值</td>
 </tr>
 <tr class="row-odd"><td>info locals</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">打印出当前函数中所有局部变量及其值</td>
 </tr>
 <tr class="row-even"><td>info frame</td>
@@ -84,23 +81,23 @@
 如函数地址，调用函数的地址，被调用函数的地址。</td>
 </tr>
 <tr class="row-odd"><td>info signals</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">打印信号信息</td>
 </tr>
 <tr class="row-even"><td>info handle</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">查看有哪些信号在被GDB检测中</td>
 </tr>
 <tr class="row-odd"><td>info threads</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">查看GDB为程序分配的线程号</td>
 </tr>
 <tr class="row-even"><td>info display</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">查看display设置的自动显示的信息</td>
 </tr>
 <tr class="row-odd"><td>info program</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td colspan="2">当进程被gdb停住时，使用该命令查看程序的是否在运行、进程号和被暂停的原因</td>
 </tr>
 </tbody>
@@ -123,15 +120,15 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>watch &lt;expr&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>为表达式（变量）expr设置一个观察点。一旦表达式值有变化时，马上停住程序</td>
 </tr>
 <tr class="row-odd"><td>rwatch &lt;expr&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>当表达式（变量）expr被读时，停住程序</td>
 </tr>
 <tr class="row-even"><td>awatch &lt;expr&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>当表达式（变量）的值被读或被写时，停住程序</td>
 </tr>
 </tbody>
@@ -154,23 +151,23 @@
 <tbody valign="top">
 <tr class="row-even"><td>break &lt;linespec&gt;
 thread &lt;threadno&gt;
-[if ...]</td>
+[if …]</td>
 <td>b</td>
 <td>linespec指定了断点设置在的源程序的行号。threadno指定了线程的ID，
 缺省则表示你的断点设在所有线程上面</td>
 </tr>
 <tr class="row-odd"><td>clear</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>清除所有的已定义的停止点。</td>
 </tr>
 <tr class="row-even"><td>clear &lt;function&gt;</td>
-<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&#160;</td>
 <td rowspan="2">清除所有设置在函数上的停止点</td>
 </tr>
 <tr class="row-odd"><td>clear &lt;filename:function&gt;</td>
 </tr>
 <tr class="row-even"><td>clear &lt;linenum&gt;</td>
-<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&#160;</td>
 <td rowspan="2">清除所有设置在指定行上的停止点</td>
 </tr>
 <tr class="row-odd"><td>clear &lt;filename:linenum&gt;</td>
@@ -186,15 +183,15 @@ range 表示断点号的范围（如：3-7）</td>
 如果什么都不指定，表示disable所有的停止点。</td>
 </tr>
 <tr class="row-even"><td>enable [range]</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>enable所指定的停止点，breakpoints为停止点号</td>
 </tr>
 <tr class="row-odd"><td>enable once [range]</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动disable</td>
 </tr>
 <tr class="row-even"><td>enable delete range</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动删除。</td>
 </tr>
 </tbody>
@@ -253,11 +250,11 @@ range 表示断点号的范围（如：3-7）</td>
 函数执行到的语句。n是栈里面层编号，如frame 0表示栈顶。</td>
 </tr>
 <tr class="row-odd"><td>up [n]</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>表示向栈的上面移动n层，缺省n表示向上移动一层。</td>
 </tr>
 <tr class="row-even"><td>down [n]</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>表示向栈的下面移动n层，缺省n表示向下移动一层。</td>
 </tr>
 <tr class="row-odd"><td>info frame</td>
@@ -295,7 +292,7 @@ range 表示断点号的范围（如：3-7）</td>
 <td>恢复程序运行，直到程序结束，或是下一个断点到来</td>
 </tr>
 <tr class="row-odd"><td>finish</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>运行程序，直到当前函数完成返回。
 并打印函数返回时的堆栈地址和返回值及参数值等信息</td>
 </tr>
@@ -304,7 +301,7 @@ range 表示断点号的范围（如：3-7）</td>
 <td>运行程序直到退出循环体</td>
 </tr>
 <tr class="row-odd"><td>display &lt;expr&gt;</td>
-<td rowspan="7">&nbsp;</td>
+<td rowspan="7">&#160;</td>
 <td rowspan="7">用display设定好了一个或多个表达式后，只要你的程序被停下来，
 GDB会自动显示你所设置的这些表达式的值。</td>
 </tr>
@@ -312,16 +309,16 @@ GDB会自动显示你所设置的这些表达式的值。</td>
 </tr>
 <tr class="row-odd"><td>display/&lt;fmt&gt; &lt;addr&gt;</td>
 </tr>
-<tr class="row-even"><td>undisplay &lt;dnums...&gt;</td>
+<tr class="row-even"><td>undisplay &lt;dnums…&gt;</td>
 </tr>
 <tr class="row-odd"><td>delete
-display &lt;dnums...&gt;</td>
+display &lt;dnums…&gt;</td>
 </tr>
 <tr class="row-even"><td>disable
-display &lt;dnums...&gt;</td>
+display &lt;dnums…&gt;</td>
 </tr>
 <tr class="row-odd"><td>enable
-display &lt;dnums...&gt;</td>
+display &lt;dnums…&gt;</td>
 </tr>
 </tbody>
 </table>
@@ -344,28 +341,28 @@ display &lt;dnums...&gt;</td>
 <tbody valign="top">
 <tr class="row-even"><td>print &lt;expr&gt;</td>
 <td>p &lt;expr&gt;</td>
-<td rowspan="2">&lt;/f&gt;是输出的格式，如/u /x /d /o /c 。&#8221;::&#8221; 用来指定一个在文件或是一个函数
+<td rowspan="2">&lt;/f&gt;是输出的格式，如/u /x /d /o /c 。”::” 用来指定一个在文件或是一个函数
 中的变量，如 <code class="docutils literal"><span class="pre">(gdb)</span> <span class="pre">p</span> <span class="pre">'f2.c'::x</span></code></td>
 </tr>
 <tr class="row-odd"><td>print/&lt;f&gt; &lt;expr&gt;</td>
 <td>p/&lt;f&gt; &lt;expr&gt;</td>
 </tr>
 <tr class="row-even"><td>whatis &lt;expr&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>打印表达式 &lt;expr&gt; 的数据类型</td>
 </tr>
 <tr class="row-odd"><td>whatis</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>打印上一个表达式 <code class="docutils literal"><span class="pre">$</span></code> 的数据类型</td>
 </tr>
 <tr class="row-even"><td>ptype &lt;typename&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>打印数据类型的描述信息。对 C 代码，typename 可以是
 <code class="docutils literal"><span class="pre">class</span> <span class="pre">class-name</span></code> <code class="docutils literal"><span class="pre">struct</span> <span class="pre">struct-tag</span></code>
 <code class="docutils literal"><span class="pre">union</span> <span class="pre">union-tag</span></code> <code class="docutils literal"><span class="pre">enum</span> <span class="pre">enum-tag</span></code></td>
 </tr>
 <tr class="row-odd"><td>ptype &lt;expr&gt;</td>
-<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&#160;</td>
 <td rowspan="2">打印表达式的类型描述信息。比 <em>whatis</em> 打印的信息更详细。
 它可以提供一个结构体的定义</td>
 </tr>
@@ -413,11 +410,11 @@ $1 = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>info threads</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>查看GDB为程序分配的线程号</td>
 </tr>
 <tr class="row-odd"><td>thread num</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>切换线程,命令行参数num是gdb内定的线程号。</td>
 </tr>
 </tbody>
@@ -439,32 +436,32 @@ $1 = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>set print pretty on</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>当GDB显示结构体时会比较漂亮</td>
 </tr>
 <tr class="row-odd"><td>show convenience</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>该命令查看当前所设置的所有的环境变量</td>
 </tr>
 <tr class="row-even"><td>set $foo =*object_ptr</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>设置GDB的环境变量(环境变量作为左值和右值时都要加$符号)</td>
 </tr>
 <tr class="row-odd"><td>set [var] width=47</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>改变被调试程序中的变量</td>
 </tr>
 <tr class="row-even"><td>jump &lt;linespec&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>指定下一条语句的运行点。&lt;linespce&gt;可以是file:line格式，
 也可以是+num这种偏移量格式</td>
 </tr>
 <tr class="row-odd"><td>return [expression]</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>使用return命令取消当前函数的执行，并立即返回</td>
 </tr>
 <tr class="row-even"><td>signal &lt;singal&gt;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>想被调试程序发信号。
 UNIX的系统信号量通常从1到15,所以&lt;singal&gt;取值也在这个范围</td>
 </tr>
@@ -506,7 +503,7 @@ UNIX的系统信号量通常从1到15,所以&lt;singal&gt;取值也在这个范�
   <div role="note" aria-label="source link">
     <h3>本页</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/gdb.txt"
+      <li><a href="_sources/gdb.rst.txt"
             rel="nofollow">显示源代码</a></li>
     </ul>
    </div>
@@ -528,11 +525,11 @@ UNIX的系统信号量通常从1到15,所以&lt;singal&gt;取值也在这个范�
       &copy;2016, Enyan Liu all rights reserved.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/gdb.txt"
+      <a href="_sources/gdb.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
